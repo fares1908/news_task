@@ -1,10 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_news_app/presentation/manager/news_bloc.dart';
 import 'package:task_news_app/presentation/pages/news_detail_page.dart';
-
-import '../manager/theme_bloc.dart';
+import '../controller/news_bloc.dart';
+import '../controller/theme_bloc.dart';
 
 class NewsListPage extends StatelessWidget {
   const NewsListPage({super.key});

@@ -14,7 +14,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     on<GetNews>(_onGetNews);
   }
 
-  void _onGetNews(GetNews event, Emitter<NewsState> emit) async {
+  void _onGetNews( event, emit) async {
     emit(NewsLoading());
     try {
       final news = await getNewsArticles();

@@ -2,7 +2,7 @@
 import 'package:task_news_app/domain/entities/news_article.dart';
 
 
-import '../../data/repositories/news_repository.dart';
+import '../repositories/news_repository.dart';
 
 class GetNewsArticles {
   final NewsRepository repository;
