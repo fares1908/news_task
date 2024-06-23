@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:task_news_app/presentation/controller/news_bloc.dart';
 import 'package:task_news_app/presentation/controller/theme_bloc.dart';
-
 import 'package:task_news_app/presentation/pages/news_list_page.dart';
+import 'package:task_news_app/data/models/news_article_model.dart';
 import 'service_locator.dart' as di;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(NewsArticleModelAdapter());
+  await Hive.openBox<NewsArticleModel>('news');
+
   di.init();
   runApp(const MyApp());
 }

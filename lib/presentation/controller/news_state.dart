@@ -24,6 +24,10 @@ class NewsLoaded extends NewsState {
 }
 
 class NewsError extends NewsState {
+  final String message;
+
+  NewsError(this.message);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [message];
 }

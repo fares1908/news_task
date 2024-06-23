@@ -1,6 +1,9 @@
+import 'package:dartz/dartz.dart';
+import 'package:hive/hive.dart';
 import 'package:task_news_app/data/data_sources/news_remote_data_source.dart';
 import 'package:task_news_app/data/models/news_article_model.dart';
-import '../../domain/repositories/news_repository.dart';
+import 'package:task_news_app/domain/repositories/news_repository.dart';
+import 'package:task_news_app/core/error/failure.dart';
 
 class NewsRepositoryImpl implements NewsRepository {
   final NewsRemoteDataSource remoteDataSource;
@@ -8,12 +11,35 @@ class NewsRepositoryImpl implements NewsRepository {
   NewsRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<List<NewsArticleModel>> getNewsArticles() async {
+  Future<Either<Failure, List<NewsArticleModel>>> getNewsArticles() async {
+    final box = Hive.box<NewsArticleModel>('news');
     try {
-      return await remoteDataSource.getNewsArticles();
-    } catch (error) {
-      print('Error occurred while fetching news articles: $error');
-      throw Exception('Failed to load news articles: $error');
+      final response = await remoteDataSource.getNewsArticles();
+      return response.fold(
+            (failure) async {
+          // If API call fails, return data from Hive
+          final localArticles = box.values.toList();
+          if (localArticles.isNotEmpty) {
+            return Right(localArticles);
+          } else {
+            return Left(failure);
+          }
+        },
+            (articles) async {
+          // If API call is successful, save data to Hive
+          await box.clear();
+          await box.addAll(articles);
+          return Right(articles);
+        },
+      );
+    } catch (e) {
+      // If an error occurs (e.g., no internet), return data from Hive
+      final localArticles = box.values.toList();
+      if (localArticles.isNotEmpty) {
+        return Right(localArticles);
+      } else {
+        return Left(NetworkFailure('Failed to load news articles: ${e.toString()}'));
+      }
     }
   }
 }
