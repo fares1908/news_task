@@ -1,4 +1,4 @@
-// lib/presentation/manager/news_bloc.dart
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:task_news_app/domain/entities/news_article.dart';
