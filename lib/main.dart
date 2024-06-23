@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
 import 'package:task_news_app/data/repositories/news_repository_impl.dart';
 import 'package:task_news_app/domain/use_cases/get_news_articles.dart';
 import 'package:task_news_app/presentation/manager/news_bloc.dart';

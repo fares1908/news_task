@@ -7,14 +7,16 @@ import 'package:task_news_app/presentation/pages/news_detail_page.dart';
 import '../manager/theme_bloc.dart';
 
 class NewsListPage extends StatelessWidget {
+  const NewsListPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('News'),
+        title: const Text('News'),
         actions: [
           IconButton(
-            icon: Icon(Icons.brightness_6),
+            icon: const Icon(Icons.brightness_6),
             onPressed: () {
               final theme = Theme.of(context).brightness == Brightness.dark
                   ? ThemeData.light()
@@ -28,7 +30,7 @@ class NewsListPage extends StatelessWidget {
       body: BlocBuilder<NewsBloc, NewsState>(
         builder: (context, state) {
           if (state is NewsLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (state is NewsLoaded) {
             return ListView.builder(
               itemCount: state.news.length,
@@ -52,7 +54,7 @@ class NewsListPage extends StatelessWidget {
               },
             );
           } else {
-            return Center(child: Text('Failed to fetch news'));
+            return const Center(child: Text('Failed to fetch news'));
           }
         },
       ),

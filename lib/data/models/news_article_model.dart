@@ -1,9 +1,3 @@
-// lib/data/models/news_article_model.dart
-import 'package:json_annotation/json_annotation.dart';
-
-part 'news_article_model.g.dart';
-
-@JsonSerializable()
 class NewsArticleModel {
   final String? title;
   final SourceModel? source;
@@ -25,11 +19,33 @@ class NewsArticleModel {
     this.content,
   });
 
-  factory NewsArticleModel.fromJson(Map<String, dynamic> json) => _$NewsArticleModelFromJson(json);
-  Map<String, dynamic> toJson() => _$NewsArticleModelToJson(this);
+  factory NewsArticleModel.fromJson(Map<String, dynamic> json) {
+    return NewsArticleModel(
+      title: json['title'] as String?,
+      source: json['source'] != null ? SourceModel.fromJson(json['source']) : null,
+      author: json['author'] as String?,
+      description: json['description'] as String?,
+      url: json['url'] as String?,
+      urlToImage: json['urlToImage'] as String?,
+      publishedAt: json['publishedAt'] as String?,
+      content: json['content'] as String?,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'source': source?.toJson(),
+      'author': author,
+      'description': description,
+      'url': url,
+      'urlToImage': urlToImage,
+      'publishedAt': publishedAt,
+      'content': content,
+    };
+  }
 }
 
-@JsonSerializable()
 class SourceModel {
   final String? id;
   final String? name;
@@ -39,6 +55,17 @@ class SourceModel {
     this.name,
   });
 
-  factory SourceModel.fromJson(Map<String, dynamic> json) => _$SourceModelFromJson(json);
-  Map<String, dynamic> toJson() => _$SourceModelToJson(this);
+  factory SourceModel.fromJson(Map<String, dynamic> json) {
+    return SourceModel(
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+    };
+  }
 }
