@@ -1,4 +1,3 @@
-// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -9,19 +8,15 @@ import 'package:task_news_app/presentation/manager/theme_bloc.dart';
 import 'package:task_news_app/presentation/pages/news_list_page.dart';
 
 void main() {
-  final newsRepository = NewsRepositoryImpl();
-  final getNewsArticles = GetNewsArticles(newsRepository);
-
-  runApp(MyApp(getNewsArticles: getNewsArticles));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final GetNewsArticles getNewsArticles;
-
-  MyApp({required this.getNewsArticles});
-
   @override
   Widget build(BuildContext context) {
+    final newsRepository = NewsRepositoryImpl();
+    final getNewsArticles = GetNewsArticles(newsRepository);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -34,6 +29,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, themeMode) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Task News App',
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
