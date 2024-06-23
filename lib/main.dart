@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => NewsBloc(getNewsArticles: di.sl())..add(GetNews()),
+          create: (context) => NewsBloc(getNewsArticles: di.di())..add(GetNews()),
         ),
         BlocProvider(
           create: (context) => ThemeCubit(),

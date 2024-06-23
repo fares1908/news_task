@@ -8,21 +8,21 @@ import 'package:task_news_app/domain/use_cases/get_news_articles.dart';
 
 import 'domain/repositories/news_repository.dart';
 
-final sl = GetIt.instance;
+final di = GetIt.instance;
 
 void init() {
 
 
   // Registering data source
-  sl.registerLazySingleton<NewsRemoteDataSource>(
+ di.registerLazySingleton<NewsRemoteDataSource>(
         () => NewsRemoteDataSourceImpl(),
   );
 
   // Registering repository
-  sl.registerLazySingleton<NewsRepository>(
-        () => NewsRepositoryImpl(remoteDataSource: sl()),
+ di.registerLazySingleton<NewsRepository>(
+        () => NewsRepositoryImpl(remoteDataSource: di()),
   );
 
   // Registering use cases
-  sl.registerLazySingleton(() => GetNewsArticles(sl()));
+ di.registerLazySingleton(() => GetNewsArticles(di()));
 }
