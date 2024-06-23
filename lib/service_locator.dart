@@ -1,4 +1,3 @@
-
 import 'package:get_it/get_it.dart';
 
 import 'package:task_news_app/data/data_sources/news_remote_data_source.dart';
@@ -12,17 +11,15 @@ final di = GetIt.instance;
 
 void init() {
 
-
-  // Registering data source
- di.registerLazySingleton<NewsRemoteDataSource>(
-        () => NewsRemoteDataSourceImpl(),
+  di.registerLazySingleton<NewsRemoteDataSource>(
+    () => NewsRemoteDataSourceImpl(),
   );
 
-  // Registering repository
- di.registerLazySingleton<NewsRepository>(
-        () => NewsRepositoryImpl(remoteDataSource: di()),
+
+  di.registerLazySingleton<NewsRepository>(
+    () => NewsRepositoryImpl(remoteDataSource: di()),
   );
 
-  // Registering use cases
- di.registerLazySingleton(() => GetNewsArticles(di()));
+
+  di.registerLazySingleton(() => GetNewsArticles(di()));
 }
