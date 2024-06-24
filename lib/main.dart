@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:task_news_app/presentation/controller/news_bloc.dart';
-import 'package:task_news_app/presentation/controller/theme_bloc.dart';
-import 'package:task_news_app/presentation/pages/news_list_page.dart';
-import 'package:task_news_app/data/models/news_article_model.dart';
+import 'features/news/data/models/news_article_model.dart';
+import 'features/news/presentation/controller/news_bloc.dart';
+import 'features/news/presentation/controller/theme_bloc.dart';
+import 'features/news/presentation/pages/news_list_page.dart';
 import 'service_locator.dart' as di;
 
 void main() async {

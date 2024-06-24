@@ -1,9 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:task_news_app/domain/entities/news_article.dart';
-import 'package:task_news_app/domain/use_cases/get_news_articles.dart';
-import 'package:task_news_app/core/error/failure.dart';
+
+import '../../domain/entities/news_article.dart';
+import '../../domain/use_cases/get_news_articles.dart';
 
 part 'news_event.dart';
 part 'news_state.dart';

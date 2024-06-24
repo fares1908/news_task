@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
-import 'package:task_news_app/data/data_sources/news_remote_data_source.dart';
-import 'package:task_news_app/data/models/news_article_model.dart';
-import 'package:task_news_app/domain/repositories/news_repository.dart';
 import 'package:task_news_app/core/error/failure.dart';
+import '../../domain/repositories/news_repository.dart';
+import '../data_sources/news_remote_data_source.dart';
+import '../models/news_article_model.dart';
 
 class NewsRepositoryImpl implements NewsRepository {
   final NewsRemoteDataSource remoteDataSource;

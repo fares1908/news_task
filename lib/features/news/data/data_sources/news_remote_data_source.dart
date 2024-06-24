@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
-import 'package:task_news_app/data/models/news_article_model.dart';
 import 'package:task_news_app/core/error/failure.dart';
+
+import '../models/news_article_model.dart';
 
 abstract class NewsRemoteDataSource {
   Future<Either<Failure, List<NewsArticleModel>>> getNewsArticles();

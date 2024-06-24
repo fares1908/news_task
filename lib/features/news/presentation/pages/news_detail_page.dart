@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task_news_app/domain/entities/news_article.dart';
+
+import '../../domain/entities/news_article.dart';
+
 
 
 class NewsDetailPage extends StatelessWidget {

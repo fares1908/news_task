@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:task_news_app/domain/entities/news_article.dart';
 import 'package:task_news_app/core/error/failure.dart';
-import 'package:task_news_app/domain/repositories/news_repository.dart';
+
+import '../entities/news_article.dart';
+import '../repositories/news_repository.dart';
+
 
 class GetNewsArticles {
   final NewsRepository repository;
