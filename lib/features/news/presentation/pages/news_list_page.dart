@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../controller/news_bloc.dart';
@@ -37,19 +38,9 @@ class NewsListPage extends StatelessWidget {
                 return ListTile(
                   title: Text(article.title ?? 'No title'),
                   subtitle: Text(article.source ?? 'No source'),
-                  leading: SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: article.urlToImage != null && article.urlToImage!.isNotEmpty
-                        ? Image.network(
-                      article.urlToImage!,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Icon(Icons.broken_image, size: 50);
-                      },
-                    )
-                        : const Icon(Icons.broken_image, size: 50),
-                  ),
+                  leading: article.urlToImage != null && article.urlToImage!.isNotEmpty
+                      ? Image.network(article.urlToImage!)
+                      : null,
                   onTap: () {
                     Navigator.push(
                       context,
