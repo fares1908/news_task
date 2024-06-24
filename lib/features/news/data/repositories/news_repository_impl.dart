@@ -9,7 +9,7 @@ import '../models/news_article_model.dart';
 class NewsRepositoryImpl implements NewsRepository {
   final NewsRemoteDataSource remoteDataSource;
   final NewsLocalDataSource localDataSource;
-  final NetworkInfo networkInfo;  // To check network connectivity
+  final NetworkIChecker networkInfo;  // To check network connectivity
 
   NewsRepositoryImpl({
     required this.remoteDataSource,

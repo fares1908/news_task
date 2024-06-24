@@ -1,14 +1,14 @@
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 
-abstract class NetworkInfo {
+abstract class NetworkIChecker {
   Future<bool> get isConnected;
 }
 
-class NetworkInfoImpl implements NetworkInfo {
+class NetworkCheckerImpl implements NetworkIChecker {
   final Connectivity connectivity;
 
-  NetworkInfoImpl(this.connectivity);
+  NetworkCheckerImpl(this.connectivity);
 
   @override
   Future<bool> get isConnected async {

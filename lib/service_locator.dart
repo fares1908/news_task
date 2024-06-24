@@ -22,7 +22,7 @@ Future<void> init() async {
   final newsBox = await Hive.openBox<NewsArticleModel>('news');
 
   // Register NetworkInfo
-  di.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(Connectivity()));
+  di.registerLazySingleton<NetworkIChecker>(() => NetworkCheckerImpl(Connectivity()));
 
   // Register Local Data Source
   di.registerLazySingleton<NewsLocalDataSource>(
