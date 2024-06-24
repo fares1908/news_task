@@ -1,5 +1,6 @@
+import 'package:equatable/equatable.dart';
 
-class NewsArticle {
+class NewsArticle extends Equatable {
   final String? title;
   final String? source;
   final String? author;
@@ -19,4 +20,16 @@ class NewsArticle {
     this.publishedAt,
     this.content,
   });
+
+  @override
+  List<Object?> get props => [
+    title,
+    source,
+    author,
+    description,
+    url,
+    urlToImage,
+    publishedAt,
+    content,
+  ];
 }
