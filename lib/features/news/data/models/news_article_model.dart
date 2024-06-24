@@ -1,31 +1,39 @@
-// lib/data/models/news_article_model.dart
 import 'package:hive/hive.dart';
+import '../../domain/entities/news_article.dart';
 
 part 'news_article_model.g.dart';
 
 @HiveType(typeId: 0)
-class NewsArticleModel extends HiveObject {
+class NewsArticleModel extends NewsArticle with HiveObjectMixin {
+  @override
   @HiveField(0)
   final String? title;
 
+  @override
   @HiveField(1)
   final String? source;
 
+  @override
   @HiveField(2)
   final String? author;
 
+  @override
   @HiveField(3)
   final String? description;
 
+  @override
   @HiveField(4)
   final String? url;
 
+  @override
   @HiveField(5)
   final String? urlToImage;
 
+  @override
   @HiveField(6)
   final String? publishedAt;
 
+  @override
   @HiveField(7)
   final String? content;
 
@@ -38,7 +46,16 @@ class NewsArticleModel extends HiveObject {
     this.urlToImage,
     this.publishedAt,
     this.content,
-  });
+  }) : super(
+    title: title,
+    source: source,
+    author: author,
+    description: description,
+    url: url,
+    urlToImage: urlToImage,
+    publishedAt: publishedAt,
+    content: content,
+  );
 
   factory NewsArticleModel.fromJson(Map<String, dynamic> json) {
     return NewsArticleModel(

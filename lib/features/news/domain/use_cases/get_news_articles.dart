@@ -11,20 +11,7 @@ class GetNewsArticlesUseCase {
   GetNewsArticlesUseCase(this.repository);
 
   Future<Either<Failure, List<NewsArticle>>> call() async {
-    final result = await repository.getNewsArticles();
-    return result.map(
-          (models) => models.map(
-            (model) => NewsArticle(
-          title: model.title,
-          source: model.source,
-          author: model.author,
-          description: model.description,
-          url: model.url,
-          urlToImage: model.urlToImage,
-          publishedAt: model.publishedAt,
-          content: model.content,
-        ),
-      ).toList(),
-    );
+    return await repository.getNewsArticles();
+
   }
 }

@@ -24,3 +24,6 @@ class NetworkFailure extends Failure {
 class EmptyCacheFailure extends Failure {
   EmptyCacheFailure(super.message);
 }
+class CacheFailure extends Failure {
+ CacheFailure(super.message);
+}

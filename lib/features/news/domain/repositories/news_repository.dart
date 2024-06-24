@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 
 import 'package:task_news_app/core/error/failure.dart';
-
-import '../../data/models/news_article_model.dart';
+import '../entities/news_article.dart';
 
 abstract class NewsRepository {
-  Future<Either<Failure, List<NewsArticleModel>>> getNewsArticles();
+  Future<Either<Failure, List<NewsArticle>>> getNewsArticles();
 }
