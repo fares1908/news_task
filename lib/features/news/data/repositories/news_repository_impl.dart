@@ -16,11 +16,9 @@ class NewsRepositoryImpl implements NewsRepository {
 
   @override
   Future<Either<Failure, List<NewsArticleModel>>> getNewsArticles() async {
-    // First, try to fetch from the remote data source
     final remoteResult = await remoteDataSource.getNewsArticles();
     return remoteResult.fold(
           (failure) async {
-        // If the remote call fails, fall back to the local data source
         final localResult = await localDataSource.getNewsArticlesFromCache();
         return localResult.fold(
               (localFailure) => Left(localFailure),
@@ -28,7 +26,6 @@ class NewsRepositoryImpl implements NewsRepository {
         );
       },
           (remoteArticles) async {
-        // If the remote call succeeds, cache the articles locally
         await localDataSource.cacheNewsArticles(remoteArticles);
         return Right(remoteArticles);
       },
