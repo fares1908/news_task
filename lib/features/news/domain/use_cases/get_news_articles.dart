@@ -5,10 +5,10 @@ import '../entities/news_article.dart';
 import '../repositories/news_repository.dart';
 
 
-class GetNewsArticles {
+class GetNewsArticlesUseCase {
   final NewsRepository repository;
 
-  GetNewsArticles(this.repository);
+  GetNewsArticlesUseCase(this.repository);
 
   Future<Either<Failure, List<NewsArticle>>> call() async {
     final result = await repository.getNewsArticles();

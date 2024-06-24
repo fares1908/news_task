@@ -7,7 +7,7 @@ part 'news_event.dart';
 part 'news_state.dart';
 
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
-  final GetNewsArticles getNewsArticles;
+  final GetNewsArticlesUseCase getNewsArticles;
 
   NewsBloc({required this.getNewsArticles}) : super(NewsInitial()) {
     on<GetNews>(_onGetNews);

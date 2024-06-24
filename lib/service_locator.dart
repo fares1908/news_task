@@ -18,5 +18,5 @@ void init() {
   );
 
 
-  di.registerLazySingleton(() => GetNewsArticles(di()));
+  di.registerLazySingleton(() => GetNewsArticlesUseCase(di()));
 }

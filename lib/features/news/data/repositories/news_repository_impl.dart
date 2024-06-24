@@ -17,16 +17,14 @@ class NewsRepositoryImpl implements NewsRepository {
       final response = await remoteDataSource.getNewsArticles();
       return response.fold(
             (failure) async {
-          // If API call fails, return data from Hive
           final localArticles = box.values.toList();
           if (localArticles.isNotEmpty) {
             return Right(localArticles);
           } else {
-            return Left(failure);
+            return Left(EmptyCacheFailure('No cached data available.'));
           }
         },
             (articles) async {
-          // If API call is successful, save data to Hive
           await box.clear();
           await box.addAll(articles);
           return Right(articles);
